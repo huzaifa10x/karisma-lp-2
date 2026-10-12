@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#F6F4EE; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  button { font:inherit; }
+  a { color:#9A7A45; text-decoration:none; }
+  a:hover { color:#0A2C25; }
+</style>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0A2C25"></rect><text x="50" y="64" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#D9BC86">K</text></svg></template>
+<meta name="ext-resource-dependency" content="assets/hero-patient.jpg" data-resource-id="gHero">
+<meta name="ext-resource-dependency" content="assets/gallery-01.jpg" data-resource-id="g01">
+<meta name="ext-resource-dependency" content="assets/gallery-02.jpg" data-resource-id="g02">
+<meta name="ext-resource-dependency" content="assets/gallery-03.jpg" data-resource-id="g03">
+<meta name="ext-resource-dependency" content="assets/gallery-04.jpg" data-resource-id="g04">
+<meta name="ext-resource-dependency" content="assets/gallery-05.jpg" data-resource-id="g05">
+<meta name="ext-resource-dependency" content="assets/gallery-06.jpg" data-resource-id="g06">
+<meta name="ext-resource-dependency" content="assets/gallery-07.jpg" data-resource-id="g07">
+<meta name="ext-resource-dependency" content="assets/gallery-09.jpg" data-resource-id="g09">
+<meta name="ext-resource-dependency" content="assets/gallery-10.jpg" data-resource-id="g10">
+<meta name="ext-resource-dependency" content="assets/gallery-11.jpg" data-resource-id="g11">
+<meta name="ext-resource-dependency" content="assets/ba-1-before.jpg" data-resource-id="ba1b">
+<meta name="ext-resource-dependency" content="assets/ba-1-after.jpg" data-resource-id="ba1a">
+<meta name="ext-resource-dependency" content="assets/ba-2-before.jpg" data-resource-id="ba2b">
+<meta name="ext-resource-dependency" content="assets/ba-2-after.jpg" data-resource-id="ba2a">
+<meta name="ext-resource-dependency" content="assets/ba-3-before.jpg" data-resource-id="ba3b">
+<meta name="ext-resource-dependency" content="assets/ba-3-after.jpg" data-resource-id="ba3a">
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#0A2C25"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0A2C25"/><text x="50" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="44" fill="#D9BC86">K</text></svg></template>
+
+<div dir="{{ dir }}" style="background:#F6F4EE; color:#0A2C25; font-family:'IBM Plex Sans Arabic','Manrope',system-ui,sans-serif; font-size:16px; line-height:1.8; min-height:100vh;">
+
+  <header style="position:sticky; top:0; z-index:50; background:rgba(246,244,238,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(10,44,37,0.10);">
+    <div aria-live="polite" style="background:#0A2C25; color:#F6F4EE; height:34px; display:flex; align-items:center; justify-content:center; gap:10px; padding:0 16px; font-size:13px; font-weight:500; overflow:hidden;">
+      <span aria-hidden="true" style="width:5px; height:5px; border-radius:999px; background:#D9BC86; flex:0 0 auto;"></span>
+      <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ stripMsg }}</span>
+    </div>
+    <div dir="ltr" style="max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:12px;">
+      <img src="https://www.karismamc.com/images/greemlogo_main.png" alt="Karisma Specialist Medical Center" style="height:42px; width:auto; display:block; margin-inline-end:auto;">
+      <button onClick="{{ toggleLang }}" style="background:none; border:1px solid rgba(10,44,37,0.25); color:#0A2C25; border-radius:999px; padding:6px 14px; font-size:13px; cursor:pointer;" style-hover="border-color:#9A7A45; color:#9A7A45;">{{ t.langToggle }}</button>
+      <a href="{{ waHeader }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:7px; background:#25D366; color:#fff; border-radius:999px; padding:7px 16px; font-size:13px; font-weight:600; white-space:nowrap;" style-hover="background:#1EBE5A; color:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.42-9.41 2.51 0 4.88.98 6.65 2.76a9.35 9.35 0 0 1 2.75 6.66c0 5.19-4.23 9.41-9.41 9.41zm8.02-17.43A11.27 11.27 0 0 0 12.05.75C5.8.75.72 5.83.72 12.08c0 2 .52 3.95 1.52 5.66L.62 23.25l5.65-1.48a11.3 11.3 0 0 0 5.78 1.47h.01c6.25 0 11.33-5.08 11.33-11.33 0-3.03-1.18-5.87-3.32-8.01z"/></svg><span>{{ t.whatsapp }}</span></a>
+    </div>
+  </header>
+
+  <section style="background:#0A2C25; color:#F6F4EE; position:relative; overflow:hidden;">
+    <div style="position:absolute; width:440px; height:440px; border-radius:50%; background:rgba(246,244,238,0.04); bottom:-220px; inset-inline-end:-160px;"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:28px 20px 64px; display:flex; flex-wrap:wrap-reverse; align-items:center; gap:36px;">
+      <div style="flex:1 1 420px; min-width:0;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+          <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#D9BC86;">KARISMA PERSONALIZED SMILE</span>
+          <span style="width:28px; height:1px; background:#D9BC86;"></span>
+        </div>
+        <h1 style="margin:0 0 20px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(34px,7vw,60px); line-height:1.3; text-wrap:balance;">
+          <span>{{ t.h1a }}</span><span style="color:#D9BC86;">{{ t.h1b }}</span><span style="display:block;">{{ t.h1c }}</span>
+        </h1>
+        <p style="margin:0 0 28px; font-size:17px; color:rgba(246,244,238,0.84); max-width:52ch; text-wrap:pretty;">{{ t.heroSub }}</p>
+        <a href="#lead" onClick="{{ openHero }}" style="display:inline-block; background:#C9A66B; color:#0A2C25; padding:16px 30px; border-radius:10px; font-weight:600; font-size:16px;" style-hover="background:#F6F4EE; color:#0A2C25;">{{ t.cta }}</a>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; color:rgba(246,244,238,0.72);">
+          <span style="width:5px; height:5px; border-radius:50%; background:#C9A66B; flex:none;"></span>
+          <span>{{ t.ctaNote }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F6F4EE; color:#0A2C25;">
+    <div style="max-width:900px; margin:0 auto; padding:72px 20px 36px; text-align:center;">
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#9A7A45;">THE KARISMA APPROACH</span>
+        <span style="width:28px; height:1px; background:#9A7A45;"></span>
+      </div>
+      <h2 style="margin:0 0 18px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; display:flex; flex-direction:column; gap:14px; align-items:center;">
+        <span style="display:block; font-size:clamp(24px,4.6vw,42px); line-height:1.4; text-wrap:balance;">{{ t.s2h1 }}</span>
+        <span style="display:flex; flex-direction:column; gap:4px; font-size:clamp(19px,3.2vw,30px); font-weight:500; line-height:1.6;">
+          <span style="display:block;">{{ t.s2h2a }}<span style="color:#9A7A45; white-space:nowrap; background-image:linear-gradient(transparent 70%, rgba(217,188,134,0.4) 70%, rgba(217,188,134,0.4) 94%, transparent 94%);">{{ t.s2h2hl1 }}</span>{{ t.s2h2b }}</span>
+          <span style="display:block;">{{ t.s2h2c1 }}<span style="color:#9A7A45; white-space:nowrap; background-image:linear-gradient(transparent 70%, rgba(217,188,134,0.4) 70%, rgba(217,188,134,0.4) 94%, transparent 94%);">{{ t.s2h2hl2 }}</span>{{ t.s2h2c }}</span>
+        </span>
+      </h2>
+    </div>
+    <div style="max-width:1180px; margin:0 auto; padding:0 0 72px;">
+      <div ref="{{ galRef }}" onScroll="{{ onGalScroll }}" style="display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:20px; padding:0 20px 8px; scrollbar-width:none;">
+        <sc-for list="{{ smileGallery }}" as="g" hint-placeholder-count="4">
+          <figure style="flex:0 0 min(74vw, 280px); margin:0; scroll-snap-align:start; display:flex; flex-direction:column; background:#0A2C25; border:1px solid rgba(217,188,134,0.25); border-radius:18px; padding:10px; box-shadow:0 14px 32px rgba(10,44,37,0.16);">
+            <div style="aspect-ratio:3 / 4; border-radius:12px; background-color:#DDE3DE; background-image:{{ g.img }}; background-size:cover; background-position:center;"></div>
+            <figcaption style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-between; gap:12px; min-height:130px; padding:14px 8px 6px; font-size:15px; font-weight:500; line-height:1.7; color:#F6F4EE; text-align:center; text-wrap:pretty;">
+              <span style="flex:1; display:flex; align-items:center;">{{ g.cap }}</span>
+              <span aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:999px; background:#D9BC86; color:#0A2C25; font-size:20px; font-weight:700; line-height:1;">{{ t.galArrow }}</span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-top:20px; padding:0 20px;">
+        <button onClick="{{ galPrev }}" aria-label="Previous" style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(154,122,69,0.6); background:transparent; color:#9A7A45; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;" style-hover="background:#C9A66B; color:#0A2C25;">{{ prevArrow }}</button>
+        <span style="font-family:'Manrope',sans-serif; font-size:14px; color:rgba(10,44,37,0.7); min-width:64px; text-align:center;" dir="ltr">{{ galCounter }}</span>
+        <button onClick="{{ galNext }}" aria-label="Next" style="width:46px; height:46px; border-radius:50%; border:1px solid rgba(154,122,69,0.6); background:transparent; color:#9A7A45; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;" style-hover="background:#C9A66B; color:#0A2C25;">{{ nextArrow }}</button>
+      </div>
+      <div style="max-width:900px; margin:32px auto 0; padding:0 20px;">
+        <p style="margin:0 auto; max-width:56ch; text-align:center; font-size:17px; line-height:1.9; color:#0A2C25; text-wrap:pretty;">{{ t.s2close }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#0A2C25; color:#F6F4EE;">
+    <div style="max-width:1180px; margin:0 auto; padding:72px 20px; display:flex; flex-wrap:wrap; align-items:center; gap:40px;">
+      <div style="flex:1 1 380px; min-width:0;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#D9BC86;">PERSONALIZED SMILE ASSESSMENT</span>
+          <span style="width:28px; height:1px; background:#D9BC86;"></span>
+        </div>
+        <h2 style="margin:0 0 18px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(30px,5.5vw,48px); line-height:1.35; text-wrap:balance;">
+          <span>{{ t.s6a }}</span><span style="color:#D9BC86;">{{ t.s6b }}</span>
+        </h2>
+        <p style="margin:0 0 26px; color:rgba(246,244,238,0.8); max-width:52ch;">{{ t.s6p }}</p>
+        <a href="#lead" onClick="{{ openAssess }}" style="display:inline-block; background:#C9A66B; color:#0A2C25; padding:16px 30px; border-radius:10px; font-weight:600;" style-hover="background:#F6F4EE; color:#0A2C25;">{{ t.cta }}</a>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; color:rgba(246,244,238,0.72);">
+          <span style="width:5px; height:5px; border-radius:50%; background:#C9A66B; flex:none;"></span>
+          <span>{{ t.ctaNote }}</span>
+        </div>
+      </div>
+      <div style="flex:1 1 360px; min-width:0; background:#fff; color:#0A2C25; border-radius:18px; padding:26px;">
+        <span style="display:inline-block; background:#DDE3DE; border-radius:999px; padding:5px 14px; font-size:13px; font-weight:600; margin-bottom:12px;">{{ t.includesTag }}</span>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); column-gap:24px;">
+          <sc-for list="{{ t.includes }}" as="i" hint-placeholder-count="5">
+            <div style="display:flex; gap:10px; align-items:flex-start; padding:12px 0; border-bottom:1px solid rgba(10,44,37,0.1); font-size:14px;">
+              <span style="color:#9A7A45; flex:none;">✓</span><span>{{ i }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:16px 0 0; font-weight:600; font-size:15px; line-height:1.7;">
+          <span style="display:block;">{{ t.includesA }}</span><span style="display:block;">{{ t.includesB }}</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#EFEAE1;">
+    <div style="max-width:1180px; margin:0 auto; padding:72px 20px;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#9A7A45;">REAL SMILES. REAL RESULTS.</span>
+          <span style="width:28px; height:1px; background:#9A7A45;"></span>
+        </div>
+        <h2 style="margin:0 0 14px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(28px,5vw,44px); line-height:1.4;">
+          <span style="display:block;">{{ t.s5a }}</span><span style="display:block;">{{ t.s5b }}</span>
+        </h2>
+        <p style="margin:0 auto; max-width:60ch; color:rgba(10,44,37,0.7);">{{ t.s5p }}</p>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:stretch;">
+        <div style="flex:1 1 100%; max-width:760px; margin:0 auto; min-width:0; background:#fff; border-radius:18px; box-shadow:0 20px 50px rgba(10,44,37,0.07); padding:14px; display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ baPairs }}" as="p" hint-placeholder-count="3">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <div style="position:relative; aspect-ratio:1 / 1; border-radius:12px; background-color:#DDE3DE; background-image:{{ p.before }}; background-size:cover; background-position:center;">
+                <span style="position:absolute; top:10px; inset-inline-start:10px; font-size:11px; color:#F6F4EE; background:rgba(10,44,37,0.8); padding:3px 10px; border-radius:999px;">{{ t.before }}</span>
+              </div>
+              <div style="position:relative; aspect-ratio:1 / 1; border-radius:12px; background-color:#DDE3DE; background-image:{{ p.after }}; background-size:cover; background-position:center;">
+                <span style="position:absolute; top:10px; inset-inline-start:10px; font-size:11px; color:#0A2C25; background:#C9A66B; padding:3px 10px; border-radius:999px;">{{ t.after }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="margin:16px 0 0; font-size:12px; color:rgba(10,44,37,0.55); text-align:center;">{{ t.disclaimer }}</p>
+    </div>
+  </section>
+
+
+
+  <section style="background:#F6F4EE;">
+    <div style="max-width:1100px; margin:0 auto; padding:72px 20px;">
+      <div style="text-align:center; margin-bottom:36px;">
+        <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#9A7A45;">PERSONALIZED SMILE PROCESS</span>
+          <span style="width:28px; height:1px; background:#9A7A45;"></span>
+        </div>
+        <h2 style="margin:0 0 14px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(28px,5vw,44px); line-height:1.35;">{{ t.s4title }}</h2>
+        <p style="margin:0 auto; max-width:60ch; color:rgba(10,44,37,0.7);">{{ t.s4p }}</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px;">
+        <sc-for list="{{ t.steps }}" as="s" hint-placeholder-count="6">
+          <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; padding:18px 8px; border-bottom:1px solid rgba(10,44,37,0.14);">
+            <span style="width:38px; height:38px; border-radius:50%; background:#DDE3DE; display:flex; align-items:center; justify-content:center; font-family:'Manrope',sans-serif; font-weight:700; font-size:14px;">{{ s.n }}</span>
+            <span style="font-weight:600; font-size:15px; line-height:1.5;">{{ s.title }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:30px auto 0; max-width:60ch; text-align:center; color:rgba(10,44,37,0.7);">
+        <span>{{ t.s4close }}</span><strong style="color:#0A2C25;">{{ t.s4closeB }}</strong>
+      </p>
+    </div>
+  </section>
+
+
+  <section style="background:#fff;">
+    <div style="max-width:840px; margin:0 auto; padding:72px 20px;">
+      <div style="text-align:center; margin-bottom:28px;">
+        <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#9A7A45;">FREQUENTLY ASKED QUESTIONS</span>
+          <span style="width:28px; height:1px; background:#9A7A45;"></span>
+        </div>
+        <h2 style="margin:0; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(28px,5vw,44px); line-height:1.4; text-wrap:balance;">{{ t.faqTitle }}</h2>
+      </div>
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid rgba(10,44,37,0.12);">
+          <button onClick="{{ f.toggle }}" style="width:100%; background:none; border:none; padding:22px 0; display:flex; gap:16px; align-items:center; text-align:start; cursor:pointer; color:#0A2C25; font-size:16px; font-weight:600;">
+            <span style="flex:1;">{{ f.q }}</span>
+            <span style="color:#9A7A45; font-size:20px; flex:none;">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 22px;">
+              <p style="margin:0 0 14px; font-size:15px; color:rgba(10,44,37,0.72);">{{ f.a }}</p>
+              <a href="#lead" onClick="{{ f.open_form }}" style="display:inline-block; border:1px solid #9A7A45; color:#9A7A45; padding:9px 18px; border-radius:8px; font-size:14px; font-weight:600;" style-hover="background:#C9A66B; color:#0A2C25;">{{ t.cta }}</a>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:#0A2C25; color:#F6F4EE;">
+    <div style="max-width:820px; margin:0 auto; padding:72px 20px; text-align:center;">
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#D9BC86;">YOUR SMILE. YOUR DECISION.</span>
+        <span style="width:28px; height:1px; background:#D9BC86;"></span>
+      </div>
+      <h2 style="margin:0 0 16px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:clamp(28px,5.5vw,46px); line-height:1.4;">
+        <span style="display:block;">{{ t.s8a }}</span><span style="display:block; color:#D9BC86;">{{ t.s8b }}</span>
+      </h2>
+      <p style="margin:0 auto 26px; max-width:56ch; color:rgba(246,244,238,0.8);">{{ t.s8p }}</p>
+      <a href="#lead" onClick="{{ openFinal }}" style="display:inline-block; background:#C9A66B; color:#0A2C25; padding:16px 30px; border-radius:10px; font-weight:600;" style-hover="background:#F6F4EE; color:#0A2C25;">{{ t.cta }}</a>
+      <p style="margin:14px 0 0; font-size:13px; color:rgba(246,244,238,0.65);">{{ t.ctaNote }}</p>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+  <footer style="background:#061E19; color:rgba(246,244,238,0.75);">
+    <div style="max-width:1180px; margin:0 auto; padding:40px 20px 110px; display:flex; flex-wrap:wrap; gap:28px; font-size:14px;">
+      <div style="flex:1 1 260px; display:flex; flex-direction:column; gap:8px;">
+        <span style="font-family:'Alexandria',sans-serif; font-weight:700; font-size:18px; color:#F6F4EE;">{{ t.footerBrand }}</span>
+        <span>{{ t.address }}</span>
+        <span style="font-size:12px; color:rgba(246,244,238,0.5);">{{ t.license }}</span>
+      </div>
+      <div style="flex:1 1 200px; display:flex; flex-direction:column; gap:6px;">
+        <a href="{{ waFooter }}" target="_blank" rel="noopener" style="color:#D9BC86;">{{ t.whatsapp }}</a>
+        <a href="{{ telHref }}" style="color:#D9BC86;"><span dir="ltr" style="unicode-bidi:isolate;">{{ phoneDisplay }}</span></a>
+        <div style="display:flex; gap:16px; margin-top:6px;">
+          <sc-for list="{{ t.socials }}" as="s" hint-placeholder-count="3">
+            <a href="#" style="color:rgba(246,244,238,0.7); font-size:13px;">{{ s }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeForm }}" style="position:fixed; inset:0; z-index:100; background:rgba(6,30,25,0.72); backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; padding:20px; overflow-y:auto; -webkit-overflow-scrolling:touch;">
+      <div onClick="{{ stop }}" style="position:relative; margin-block:auto; flex:none; width:100%; max-width:440px; background:#0A2C25; color:#F6F4EE; border-radius:18px; border:1px solid rgba(217,188,134,0.25); padding:28px 24px 24px; box-shadow:0 30px 80px rgba(0,0,0,0.4);">
+        <button onClick="{{ closeForm }}" aria-label="Close" style="position:absolute; top:12px; inset-inline-end:12px; width:36px; height:36px; border-radius:50%; border:1px solid rgba(246,244,238,0.2); background:none; color:#F6F4EE; font-size:18px; cursor:pointer;">×</button>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <span style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#D9BC86;">KARISMA PERSONALIZED SMILE</span>
+            <h3 style="margin:0 0 4px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:24px; line-height:1.4;">{{ t.formTitle }}</h3>
+            <label style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{ t.fName }}</span><span style="color:#E8A08C;">*</span></label>
+            <input value="{{ name }}" onChange="{{ onName }}" placeholder="{{ t.namePh }}" autoComplete="name" style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%;" style-focus="border-color:#C9A66B;">
+            <label style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{ t.fPhone }}</span><span style="color:#E8A08C;">*</span></label>
+            <div dir="ltr" style="display:flex; background:#F6F4EE; border-radius:10px; overflow:hidden; border:1px solid transparent;">
+              <select value="{{ cc }}" onChange="{{ onCc }}" style="border:none; border-right:1px solid rgba(10,44,37,0.15); background:transparent; color:#0A2C25; padding:0 10px 0 14px; font-size:15px; font-family:'Manrope',sans-serif; outline:none; cursor:pointer;">
+                <sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="7"><option value="{{ c.code }}">{{ c.label }}</option></sc-for>
+              </select>
+              <input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="50 123 4567" inputMode="tel" autoComplete="tel-national" style="flex:1; min-width:0; border:none; background:transparent; color:#0A2C25; padding:14px 16px; font-size:16px; outline:none; font-family:inherit;">
+            </div>
+            <label style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{ t.fWa }}</span><span style="font-weight:400; color:rgba(246,244,238,0.55);">{{ t.optional }}</span></label>
+            <div dir="ltr" style="display:flex; background:#F6F4EE; border-radius:10px; overflow:hidden;">
+              <select value="{{ waCc }}" onChange="{{ onWaCc }}" style="border:none; border-right:1px solid rgba(10,44,37,0.15); background:transparent; color:#0A2C25; padding:0 10px 0 14px; font-size:15px; font-family:'Manrope',sans-serif; outline:none; cursor:pointer;">
+                <sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="7"><option value="{{ c.code }}">{{ c.label }}</option></sc-for>
+              </select>
+              <input value="{{ waNum }}" onChange="{{ onWaNum }}" placeholder="50 123 4567" inputMode="tel" style="flex:1; min-width:0; border:none; background:transparent; color:#0A2C25; padding:14px 16px; font-size:16px; outline:none; font-family:inherit;">
+            </div>
+            <label style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{ t.fEmail }}</span><span style="font-weight:400; color:rgba(246,244,238,0.55);">{{ t.optional }}</span></label>
+            <input value="{{ email }}" onChange="{{ onEmail }}" type="email" inputMode="email" autoComplete="email" dir="ltr" placeholder="name@example.com" style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%; text-align:start;" style-focus="border-color:#C9A66B;">
+            <label style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{ t.fDept }}</span><span style="color:#E8A08C;">*</span></label>
+            <select value="{{ dept }}" onChange="{{ onDept }}" style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%; cursor:pointer; appearance:auto;">
+              <option value="" disabled="disabled">{{ t.deptPh }}</option>
+              <sc-for list="{{ t.depts }}" as="d" hint-placeholder-count="4"><option value="{{ d }}">{{ d }}</option></sc-for>
+            </select>
+            <input type="hidden" name="source" value="{{ formSrc }}">
+            <input type="hidden" name="campaign_source" value="{{ campaignSource }}">
+            <input type="hidden" name="campaign_medium" value="{{ campaignMedium }}">
+            <input type="hidden" name="gclid" value="{{ gclid }}">
+            <input type="hidden" name="gbraid" value="{{ gbraid }}">
+            <input type="hidden" name="wbraid" value="{{ wbraid }}">
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:13px; color:#F2B8A8;">{{ formError }}</span>
+            </sc-if>
+            <button onClick="{{ submitForm }}" style="background:#C9A66B; color:#0A2C25; border:none; border-radius:10px; padding:16px; font-size:16px; font-weight:600; cursor:pointer; font-family:inherit;" style-hover="background:#F6F4EE;">{{ t.cta }}</button>
+            <p style="margin:0; font-size:12px; line-height:1.7; color:rgba(246,244,238,0.65);">{{ t.formNote }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:12px; text-align:center; padding:12px 0 4px;">
+            <span style="width:52px; height:52px; border-radius:50%; background:#C9A66B; color:#0A2C25; display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto;">✓</span>
+            <h3 style="margin:0; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:22px;">{{ t.sentTitle }}</h3>
+            <p style="margin:0; font-size:15px; color:rgba(246,244,238,0.78);">{{ t.sentBody }}</p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:fixed; bottom:0; left:0; right:0; z-index:60; background:rgba(10,44,37,0.96); backdrop-filter:blur(10px); border-top:1px solid rgba(217,188,134,0.2); padding:12px 20px;">
+    <div style="max-width:520px; margin:0 auto;">
+      <a href="#lead" onClick="{{ openSticky }}" style="display:block; text-align:center; background:#C9A66B; color:#0A2C25; padding:14px; border-radius:10px; font-size:16px; font-weight:600;" style-hover="background:#F6F4EE;">{{ t.cta }}</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ar&quot;,&quot;en&quot;],&quot;default&quot;:&quot;ar&quot;,&quot;tsType&quot;:&quot;'ar'|'en'&quot;},&quot;waNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;971500000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+971 50 000 0000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { lang: null, open: -1, gi: 0, formOpen: false, formSrc: '', name: '', phone: '', cc: '+971', waCc: '+971', waNum: '', email: '', dept: '', sent: false, formError: '' };
+  campaign() {
+    if (!this._camp) {
+      let q; try { q = new URLSearchParams(window.location.search); } catch (e) { q = new URLSearchParams(''); }
+      const ss = (k) => { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } };
+      const src = q.get('utm_source') || q.get('campaign_source') || ss('lp4_campaign_source') || (q.get('gclid') ? 'google' : '');
+      const med = q.get('utm_medium') || q.get('campaign_medium') || ss('lp4_campaign_medium') || (q.get('gclid') ? 'cpc' : '');
+      try { if (src) sessionStorage.setItem('lp4_campaign_source', src); if (med) sessionStorage.setItem('lp4_campaign_medium', med); } catch (e) {}
+      const gclid = q.get('gclid') || ss('lp4_gclid');
+      const gbraid = q.get('gbraid') || ss('lp4_gbraid');
+      const wbraid = q.get('wbraid') || ss('lp4_wbraid');
+      try { if (gclid) sessionStorage.setItem('lp4_gclid', gclid); if (gbraid) sessionStorage.setItem('lp4_gbraid', gbraid); if (wbraid) sessionStorage.setItem('lp4_wbraid', wbraid); } catch (e) {}
+      this._camp = { source: src, medium: med, gclid, gbraid, wbraid };
+    }
+    return this._camp;
+  }
+  openForm(src) {
+    return (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ formOpen: true, formSrc: src, sent: false, formError: '' }); };
+  }
+  submitForm() {
+    const ar = this.L() === 'ar';
+    const name = this.state.name.trim(), phone = this.state.phone.replace(/[^0-9+]/g, '');
+    if (name.length < 2) return this.setState({ formError: ar ? 'من فضلك اكتب اسمك.' : 'Please enter your name.' });
+    if (phone.replace(/\D/g, '').length < 8) return this.setState({ formError: ar ? 'من فضلك اكتب رقم هاتف صحيح.' : 'Please enter a valid phone number.' });
+    const email = this.state.email.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return this.setState({ formError: ar ? 'البريد الإلكتروني غير صحيح.' : 'Please enter a valid email.' });
+    if (!this.state.dept) return this.setState({ formError: ar ? 'من فضلك اختر الخدمة.' : 'Please select a service.' });
+    const waDigits = this.state.waNum.replace(/\D/g, '');
+    const lead = {
+      name, phone: this.state.cc + phone.replace(/^0+/, ''),
+      whatsapp: waDigits ? this.state.waCc + waDigits.replace(/^0+/, '') : '',
+      email, department: this.state.dept,
+      campaign_source: this.campaign().source, campaign_medium: this.campaign().medium,
+      gclid: this.campaign().gclid, gbraid: this.campaign().gbraid, wbraid: this.campaign().wbraid,
+      source: this.state.formSrc, page: 'Landing Page 4', lang: this.L(), ts: new Date().toISOString()
+    };
+    if (this.props.formEndpoint) {
+      fetch(this.props.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(lead) }).catch(() => {});
+    }
+    console.log('[lead]', lead);
+    this.setState({ sent: true, formError: '' });
+  }
+  galRef = React.createRef();
+  galStep(d) {
+    const el = this.galRef.current; if (!el || !el.firstElementChild) return;
+    const step = el.firstElementChild.getBoundingClientRect().width + 14;
+    const rtl = getComputedStyle(el).direction === 'rtl';
+    const max = el.scrollWidth - el.clientWidth;
+    const idx = Math.round(Math.abs(el.scrollLeft) / step);
+    const pos = Math.max(0, Math.min(max, (idx + d) * step));
+    el.scrollTo({ left: rtl ? -pos : pos, behavior: 'smooth' });
+  }
+  L() { return this.state.lang || this.props.defaultLang || 'ar'; }
+
+  wa(ctx) {
+    const num = (this.props.waNumber || '971500000000').replace(/[^0-9]/g, '');
+    const ar = this.L() === 'ar';
+    const msg = (ar ? 'مرحباً كاريزما، أبغى أحجز تقييم ابتسامتي.' : 'Hello Karisma, I would like to book my smile assessment.') +
+      '\n' + (ar ? 'المصدر: ' : 'Source: ') + ctx + '\n' + 'LP: Landing Page 4';
+    return 'https://wa.me/' + num + '?text=' + encodeURIComponent(msg);
+  }
+
+  copy() {
+    const ar = {
+      langToggle: 'English', whatsapp: 'واتساب', cta: 'اكتشف الابتسامة اللي تناسبك',
+      ctaNote: 'Consultation + الأشعة المطلوبة للتقييم دون رسوم',
+      h1a: 'الناس تلاحظ ', h1b: 'جمال ابتسامتك...', h1c: 'مب إنك عامل Veneers.',
+      heroSub: 'في كاريزما، ما نبدأ بالخامة ولا بقائمة الأسعار. نبدأ بالنتيجة اللي تبغاها، ونقيّم حالتك، وبعدها الطبيب يرشح لك الطريق الأنسب للوصول لها.',
+      heroCard: 'مصممة حول ملامحك، حالتك والنتيجة اللي تبغى توصل لها.',
+      s2a: 'مش كل Hollywood Smile ', s2b: 'مثل الثانية.',
+      s2p1: 'لأن كل شخص له ملامح مختلفة، حالة أسنان مختلفة، ونتيجة مختلفة يبغى يوصل لها.',
+      s2p2: 'عشان كذا، اختيار ابتسامتك ما المفروض يبدأ من عدد الأسنان أو اسم الخامة فقط.',
+      notOnly: [
+        { n: '01', title: 'مب عدد الأسنان فقط', desc: '16 سن في مكان مب بالضرورة تعطيك نفس النتيجة اللي تحصل عليها في مكان ثاني.' },
+        { n: '02', title: 'ومب درجة البياض فقط', desc: 'جمال الابتسامة يعتمد على توازن اللون والشكل والشفافية والتفاصيل مع ملامحك.' },
+        { n: '03', title: 'ومب اسم الخامة فقط', desc: 'الخامة جزء من النتيجة. الأهم اختيارها وتصميمها بما يناسب حالتك والنتيجة اللي تبغاها.' }
+      ],
+      s3a: 'وعدنا لك', s3b: 'تاخد الابتسامة اللي تناسبك انت',
+      s3p: 'بعض صور المراجعين بعد تركيب ابتسامتهم الجديدة',
+      s4title: 'كيف نصمم ابتسامة تناسبك أنت؟',
+      s4p: 'ما تحتاج تعرف من البداية أي خامة تناسبك. دور الطبيب إنه يفهم اللي تبغاه، يقيّم حالتك، وبعدها يشرح لك الخيارات ويرشّح لك الأنسب.',
+      steps: [{ n: '1', title: 'نفهم اللي تبغاه' }, { n: '2', title: 'نقيّم حالتك' }, { n: '3', title: 'نحدد الاتجاه الجمالي' }, { n: '4', title: 'نرشّح الأنسب' }, { n: '5', title: 'نشرح لك السبب' }, { n: '6', title: 'وأنت تقرر' }],
+      s4close: 'لأن الهدف مب مجرد أسنان بيضاء. الهدف ابتسامة طبيعية تكمل ملامح وجهك وتخلي الناس تلاحظ جمال ابتسامتك… ', s4closeB: 'مب إنك عامل Veneers.',
+      s5a: 'الفرق مب مطلوب منك تصدقه.', s5b: 'شوفه بنفسك.',
+      s5p: 'شوف نتائج حقيقية لمراجعين Karisma وتفاصيل الابتسامات المصممة حسب كل حالة.',
+      storyTitle: 'أحياناً النتيجة تتكلم عن نفسها.',
+      story1: 'أحد مرضى Karisma اختار Katana Smile.',
+      story2a: 'أصدقاؤه شافوا النتيجة عليه، وأعجبتهم لدرجة إنهم سافروا من ', story2b: 'إسبانيا إلى الشارقة', story2c: ' عشان يعملوا ابتسامتهم في Karisma.',
+      story3: 'بالنسبة لنا، أفضل دليل على النتيجة هو النتيجة نفسها.',
+      before: 'قبل', after: 'بعد', disclaimer: 'النتائج قد تختلف من مريض لآخر.',
+      s6a: 'قبل ما تختار ابتسامتك، ', s6b: 'اعرف إيش يناسبك.',
+      s6p: 'ابدأ بتقييم ابتسامتك. نفهم النتيجة اللي تبغى توصل لها، نقيّم حالة أسنانك والعضة، والطبيب يرشّح لك الخيار الأنسب ويشرح لك السبب والخطة والتكلفة.',
+      smiles: [
+        { key: 'Solitaire Smile', name: 'ابتسامة سوليتير', badge: 'حصري في كاريزما', desc: 'ملمس ونقشة فريدة تعكس الضوء مع كل ابتسامة. لافتة، وتخصّك أنت وحدك' },
+        { key: '6D E-max Smile', name: 'ابتسامة إي ماكس 6D', badge: 'الأكثر طلباً', desc: 'بياض استثنائي ولمعة زجاجية، مصنوعة بأحدث التقنيات الأمريكية لثقة تدوم' },
+        { key: 'Katana Smile', name: 'ابتسامة كاتانا', badge: 'تقنية يابانية', desc: 'مرضى يسافرون من مختلف دول المنطقة لتجربتها، وهي حصرية في كاريزما' }
+      ],
+      formTitle: 'احجز استشارتك الآن', namePh: 'الاسم', phonePh: 'رقم الهاتف',
+      fName: 'الاسم الكامل', fPhone: 'رقم الهاتف', fWa: 'رقم الواتساب', fEmail: 'البريد الإلكتروني', fDept: 'اختر الخدمة', optional: '(اختياري)', deptPh: 'الخدمة',
+      depts: ['ابتسامة هوليود', 'زراعة اسنان', 'تقويم اسنان', 'تبييض اسنان'],
+      formNote: 'نحترم خصوصيتك وبياناتك محفوظة بأمان، وسيتواصل معك القسم المتخصص في أقرب وقت.',
+      sentTitle: 'تم استلام طلبك', sentBody: 'شكراً لك، سيتواصل معك القسم المتخصص في أقرب وقت.',
+      strip: ['المواعيد محدودة', 'لا يوجد وقت انتظار', 'قسّم فاتورتك مع تابي وتمارا'],
+      galArrow: '←',
+      s2h1: 'كل الناس ممكن يطلبون Hollywood Smile…', s2h2a: 'بس كل واحد ', s2h2hl1: 'يحتاج شيء مختلف', s2h2b: '،', s2h2c1: 'وكل واحد عنده ', s2h2hl2: 'مشكلة مختلفة', s2h2c: '.',
+      s2caps: ['كان خايف من حساسية الأسنان بعد إزالة الفينير القديم… شلناه بالليزر في ثوانٍ وبأقل حساسية ممكنة.', 'كانت تخاف من حف الأسنان… وسوينا لها ابتسامتها بدون حف لأن حالة أسنانها ما كانت تحتاج.', 'كان يبي أغلى ابتسامة في المركز… بس رشحنا له ابتسامة أقل في السعر لأنها الأنسب لوجهه.', 'كان عنده سفرية ويحسب إن تركيب الأسنان ياخذ وقت طويل… خلصنا كل شي في جلستين.', 'كانت تخاف إن شكل الابتسامة يطلع غير طبيعي… اخترنا لها الشكل والألوان اللي تبان طبيعية جداً.', 'كمّل باقي الصور عشان تعرف شي مهم', 'كل اللي عليك تقول لنا وش تبي.', 'وتحضر استشارة مع الطبيب.', 'وتاخذ الابتسامة اللي تبان فيها أحلى.', 'وتكون سعيد بيها.', 'وتعيش معك سنين وسنين.'],
+      s2quotes: ['"أبيها طبيعية."', '"أبي شيء مميز ومختلف."', '"عندي ابتسامة قديمة وأبي أغيرها."', '"ماني عارف وش يناسب أسناني."'],
+      s2close: 'عشان كذا دور الطبيب مو يعطي الجميع نفس الابتسامة. دوره يفهم وش تبي، ويحدد معك وش يناسب حالتك.',
+      includesTag: 'يشمل التقييم',
+      includes: ['استشارة مع الطبيب', 'تقييم حالة الاسنان', 'فهم النتيجة اللي تبغاها', 'تحديد الاتجاه الجمالي', 'خطة العلاج والتكلفة'],
+      includesA: 'تعرف إيش يناسب حالتك وليش…', includesB: 'وبعدها القرار لك.',
+      faqTitle: 'قبل ما تحجز، يمكن عندك بعض الأسئلة.',
+      faqs: [
+        { q: 'كم مدة الضمان؟', a: 'ضمان مدى الحياة على اللون والرائحة، وضمان آخر ضد الكسر تتحدد مدته حسب نوع الابتسامة اللي يوصي بها الطبيب.', ctx: 'FAQ: الضمان' },
+        { q: 'هل التقييم والأشعة فعلاً دون رسوم؟', a: 'نعم. الـConsultation مع الطبيب والأشعة المطلوبة للتقييم مقدّمة لك دون رسوم، وتطلع منها بخطة واضحة قبل أي قرار.', ctx: 'FAQ: رسوم التقييم' },
+        { q: 'هل أقدر أغيّر Smile قديمة؟', a: 'نعم. نقيّم الـSmile الحالية وحالة اللثة، ونشرح لك خطة الإزالة والاستبدال باستخدام تقنيات متقدمة لإدارة الألم وبأقل قدر من الانزعاج.', ctx: 'FAQ: استبدال Smile قديمة' },
+        { q: 'هل كل الحالات تخلص في 3 زيارات؟', a: 'كثير من الحالات تخلص في 3 زيارات، لكن المدة تختلف حسب حالتك وأي علاج مطلوب قبل الـSmile. الطبيب يوضح لك المدة في التقييم.', ctx: 'FAQ: مدة العلاج' },
+        { q: 'ماذا لو احتاجت أسناني علاج قبل الـSmile؟', a: 'يحدد الطبيب أي علاج مطلوب أثناء التقييم ويضيفه لخطتك، عشان تكون النتيجة ثابتة وصحية على المدى الطويل.', ctx: 'FAQ: علاج قبل الـSmile' },
+        { q: 'هل فيه تقسيط عن طريق تابي وتمارا؟', a: 'نعم، تقدر تقسّط تكلفة العلاج عن طريق تابي وتمارا. الفريق يشرح لك الخيارات المتاحة في التقييم.', ctx: 'FAQ: تابي وتمارا' },
+        { q: 'هل لازم أبدأ العلاج بعد التقييم؟', a: 'لا. تطلع من التقييم بخطة وتكلفة واضحة، والقرار لك متى ما كنت جاهز.', ctx: 'FAQ: الالتزام بعد التقييم' }
+      ],
+      s8a: 'مب لازم تختار ابتسامتك الآن.', s8b: 'ابدأ بمعرفة إيش يناسبك.',
+      s8p: 'احجز تقييم ابتسامتك، واعرف حالة أسنانك، النتيجة اللي تقدر توصل لها، وتوصية الطبيب قبل ما تقرر.',
+      footerBrand: 'كاريزما التخصصي الطبي', address: '[العنوان]، [المنطقة]، الشارقة', license: 'مرخّص من [الجهة الصحية]، رقم الترخيص [XXXXX]',
+      socials: ['إنستغرام', 'تيك توك', 'سناب شات']
+    };
+    const en = {
+      langToggle: 'العربية', whatsapp: 'WhatsApp', cta: 'Discover the smile that suits you',
+      ctaNote: 'Consultation + required X-rays, complimentary',
+      h1a: 'People notice ', h1b: 'how beautiful your smile is…', h1c: 'not that you had veneers.',
+      heroSub: 'At Karisma, we do not start with the material or a price list. We start with the result you want, assess your case, and then the doctor recommends the best way to get there.',
+      heroCard: 'Designed around your features, your case and the result you want.',
+      s2a: 'Not every Hollywood Smile ', s2b: 'is the same.',
+      s2p1: 'Every person has different features, a different dental condition and a different result in mind.',
+      s2p2: 'That is why choosing your smile should not start with the number of teeth or the material name alone.',
+      notOnly: [
+        { n: '01', title: 'Not just the number of teeth', desc: '16 teeth in one place will not necessarily give you the result you would get somewhere else.' },
+        { n: '02', title: 'Not just the shade of white', desc: 'A beautiful smile depends on balancing colour, shape, translucency and detail with your features.' },
+        { n: '03', title: 'Not just the material', desc: 'The material is part of the result. What matters is choosing and designing it for your case and goal.' }
+      ],
+      s3a: 'Our promise to you', s3b: 'You get the smile that suits you.',
+      s3p: 'Some of our patients after getting their new smile.',
+      s4title: 'How do we design a smile that suits you?',
+      s4p: 'You do not need to know which material suits you. The doctor listens, assesses your case, then explains the options and recommends the best fit.',
+      steps: [{ n: '1', title: 'We understand your goal' }, { n: '2', title: 'We assess your case' }, { n: '3', title: 'We set the aesthetic direction' }, { n: '4', title: 'We recommend the best fit' }, { n: '5', title: 'We explain why' }, { n: '6', title: 'You decide' }],
+      s4close: 'The goal is not just nicer teeth. It is a natural smile that completes your face, so people notice how beautiful it is… ', s4closeB: 'not that you had veneers.',
+      s5a: 'You do not have to take our word for it.', s5b: 'See it yourself.',
+      s5p: 'Real results from Karisma patients, each smile designed for its case.',
+      storyTitle: 'Sometimes the result speaks for itself.',
+      story1: 'One Karisma patient chose the Katana Smile.',
+      story2a: 'His friends saw the result and liked it so much they travelled from ', story2b: 'Spain to Sharjah', story2c: ' to have their smiles done at Karisma.',
+      story3: 'For us, the best proof of the result is the result itself.',
+      before: 'Before', after: 'After', disclaimer: 'Results may vary by patient.',
+      s6a: 'Before you choose your smile, ', s6b: 'know what suits you.',
+      s6p: 'Start with a smile assessment. We understand your goal, assess your teeth and bite, and the doctor recommends the best option and explains the reason, plan and cost.',
+      smiles: [
+        { key: 'Solitaire Smile', name: 'Solitaire Smile', badge: 'Exclusive to Karisma', desc: 'Unique texture and pattern that catches the light with every smile. Bold, and unmistakably yours' },
+        { key: '6D E-max Smile', name: '6D E-max Smile', badge: 'Most requested', desc: 'Exceptional whiteness and glass-like brilliance, crafted with cutting-edge American technology for lasting confidence' },
+        { key: 'Katana Smile', name: 'Katana Smile', badge: 'Japanese technology', desc: 'Patients travel from across the region just to experience it, offered exclusively by Karisma' }
+      ],
+      formTitle: 'Book your consultation now', namePh: 'Name', phonePh: 'Phone number',
+      fName: 'Full Name', fPhone: 'Phone Number', fWa: 'WhatsApp Number', fEmail: 'Email Address', fDept: 'Select Service', optional: '(optional)', deptPh: 'Service',
+      depts: ['Hollywood Smile', 'Dental Implants', 'Orthodontics', 'Teeth Whitening'],
+      formNote: 'Your privacy is respected and your data is kept secure. Our specialist team will contact you shortly.',
+      sentTitle: 'Request received', sentBody: 'Thank you. Our specialist team will contact you shortly.',
+      strip: ['Limited appointments', 'No waiting time', 'Split your bill with Tabby & Tamara'],
+      galArrow: '→',
+      s2h1: 'Everyone can ask for a Hollywood Smile…', s2h2a: 'but everyone ', s2h2hl1: 'needs something different', s2h2b: ',', s2h2c1: 'and everyone has ', s2h2hl2: 'a different concern', s2h2c: '.',
+      s2caps: ['He worried about sensitivity after removing his old veneers… we removed them by laser in seconds, with minimal sensitivity.', 'She was afraid of tooth shaving… we did her smile without shaving because her teeth did not need it.', 'He wanted the most premium smile we offer… we recommended a less costly option because it suited his face best.', 'He had a trip coming up and thought treatment would take too long… we finished everything in two sessions.', 'She was afraid the smile would look unnatural… we chose the shape and shades that look completely natural on her.', 'Keep swiping to discover something important', 'All you have to do is tell us what you want.', 'And you attend a consultation with the doctor.', 'And you get the smile that looks best on you.', 'And you are happy with it.', 'And it stays with you for years and years.'],
+      s2quotes: ['"I want it natural."', '"I want something special and different."', '"I have an old smile and want to change it."', '"I don\u2019t know what suits my teeth."'],
+      s2close: 'That is why the doctor\u2019s role is not to give everyone the same smile. It is to understand what you want and decide with you what suits your case.',
+      includesTag: 'The assessment includes',
+      includes: ['Consultation with the doctor', 'Teeth and bite assessment', 'Understanding your goal', 'Setting the aesthetic direction', 'Treatment plan and cost'],
+      includesA: 'Know what suits your case and why…', includesB: 'then the decision is yours.',
+      faqTitle: 'Before you book, you may have a few questions.',
+      faqs: [
+        { q: 'How long is the warranty?', a: 'A lifetime warranty on colour and odour, plus a separate warranty against breakage whose length depends on the type of smile the doctor recommends.', ctx: 'FAQ: Warranty' },
+        { q: 'Is the assessment and X-ray really complimentary?', a: 'Yes. The consultation with the doctor and the X-rays required for assessment are complimentary, and you leave with a clear plan before any decision.', ctx: 'FAQ: assessment fees' },
+        { q: 'Can I replace an old smile?', a: 'Yes. We assess your current veneers and gums and explain the removal and replacement plan, using advanced pain-management techniques with minimal discomfort.', ctx: 'FAQ: replacing old smile' },
+        { q: 'Are all cases finished in 3 visits?', a: 'Many cases are completed in 3 visits, but timing depends on your case and any treatment needed first. The doctor confirms the timeline at your assessment.', ctx: 'FAQ: treatment duration' },
+        { q: 'What if my teeth need treatment before the smile?', a: 'The doctor identifies any needed treatment during the assessment and adds it to your plan, so the result stays healthy long-term.', ctx: 'FAQ: treatment before smile' },
+        { q: 'Can I pay in instalments with Tabby or Tamara?', a: 'Yes. Tabby and Tamara payment plans are available, and the team walks you through the options at your assessment.', ctx: 'FAQ: Tabby & Tamara' },
+        { q: 'Do I have to start treatment after the assessment?', a: 'No. You leave with a clear plan and cost, and the decision is yours whenever you are ready.', ctx: 'FAQ: commitment after assessment' }
+      ],
+      s8a: 'You do not have to choose your smile now.', s8b: 'Start by knowing what suits you.',
+      s8p: 'Book your smile assessment to learn your dental condition, the result you can achieve and the doctor’s recommendation before you decide.',
+      footerBrand: 'Karisma Specialist Medical Center', address: '[Street address], [Area], Sharjah', license: 'Licensed by [health authority], License no. [XXXXX]',
+      socials: ['Instagram', 'TikTok', 'Snapchat']
+    };
+    return this.L() === 'ar' ? ar : en;
+  }
+
+  componentDidMount() { this._stripT = setInterval(() => this.setState(s => ({ si: ((s.si || 0) + 1) % 3 })), 3200); }
+  componentWillUnmount() { clearInterval(this._stripT); }
+
+  renderVals() {
+    const t = this.copy();
+    const phone = this.props.phoneDisplay || '+971 50 000 0000';
+    return {
+      stripMsg: t.strip[(this.state.si || 0) % t.strip.length],
+      t, dir: this.L() === 'ar' ? 'rtl' : 'ltr',
+      phoneDisplay: phone, telHref: 'tel:' + phone.replace(/[^0-9+]/g, ''),
+      toggleLang: () => this.setState({ lang: this.L() === 'ar' ? 'en' : 'ar' }),
+      smileGallery: [['gHero','hero-patient'],['g07','gallery-07'],['g01','gallery-01'],['g02','gallery-02'],['g05','gallery-05'],['g03','gallery-03'],['g04','gallery-04'],['g06','gallery-06'],['g09','gallery-09'],['g10','gallery-10'],['g11','gallery-11']].map(([id, f], i) => ({ img: "url('" + ((window.__resources && window.__resources[id]) || ('assets/' + f + '.jpg')) + "')", cap: t.s2caps[i] || '' })),
+      smiles: t.smiles.map((s, i) => Object.assign({}, s, {
+        img: "url('assets/" + ['smile-card-1', 'smile-card-2', 'smile-katana'][i] + ".jpg')",
+        wa: this.wa('Smile type: ' + s.key)
+      })),
+      baPairs: [1,2,3].map(n => { const r = window.__resources || {}; return { before: "url('" + (r['ba' + n + 'b'] || ('assets/ba-' + n + '-before.jpg')) + "')", after: "url('" + (r['ba' + n + 'a'] || ('assets/ba-' + n + '-after.jpg')) + "')" }; }),
+      galRef: this.galRef,
+      galPrev: () => this.galStep(-1),
+      galNext: () => this.galStep(1),
+      prevArrow: this.L() === 'ar' ? '→' : '←',
+      nextArrow: this.L() === 'ar' ? '←' : '→',
+      galCounter: (this.state.gi + 1) + ' / 11',
+      onGalScroll: (e) => {
+        const el = e.currentTarget; const f = el.firstElementChild; if (!f) return;
+        const w = f.getBoundingClientRect().width + 14;
+        const max = el.scrollWidth - el.clientWidth;
+        let gi = Math.round(Math.abs(el.scrollLeft) / w);
+        if (Math.abs(el.scrollLeft) >= max - 2) gi = 10;
+        gi = Math.max(0, Math.min(10, gi));
+        if (gi !== this.state.gi) this.setState({ gi });
+      },
+      formOpen: this.state.formOpen, formSrc: this.state.formSrc,
+      campaignSource: this.campaign().source, campaignMedium: this.campaign().medium,
+      gclid: this.campaign().gclid, gbraid: this.campaign().gbraid, wbraid: this.campaign().wbraid,
+      sent: this.state.sent, notSent: !this.state.sent, formError: this.state.formError,
+      name: this.state.name, phone: this.state.phone,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      cc: this.state.cc, waCc: this.state.waCc, waNum: this.state.waNum, email: this.state.email, dept: this.state.dept,
+      onCc: (e) => this.setState({ cc: e.target.value }),
+      onWaCc: (e) => this.setState({ waCc: e.target.value }),
+      onWaNum: (e) => this.setState({ waNum: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onDept: (e) => this.setState({ dept: e.target.value }),
+      countryCodes: [['AE','+971'],['SA','+966'],['KW','+965'],['QA','+974'],['BH','+973'],['OM','+968'],['EG','+20']].map(([c, code]) => ({ code, label: c + ' ' + code })),
+      submitForm: () => this.submitForm(),
+      closeForm: () => this.setState({ formOpen: false }),
+      stop: (e) => e.stopPropagation(),
+      openHero: this.openForm('Hero'), openAssess: this.openForm('Assessment section'),
+      openFinal: this.openForm('Final CTA'), openSticky: this.openForm('Sticky CTA'),
+      waHeader: this.wa('Header'), waHero: this.wa('Hero'), waAssess: this.wa('Assessment section'),
+      waFinal: this.wa('Final CTA'), waFooter: this.wa('Footer'), waSticky: this.wa('Sticky CTA'),
+      faqs: t.faqs.map((f, i) => ({
+        q: f.q, a: f.a, open: this.state.open === i, sign: this.state.open === i ? '−' : '+',
+        wa: this.wa(f.ctx), open_form: this.openForm(f.ctx), toggle: () => this.setState({ open: this.state.open === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
