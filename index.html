@@ -362,7 +362,7 @@
         <div
           style="max-width:1180px; margin:0 auto; padding:40px 20px 110px; display:flex; flex-wrap:wrap; gap:28px; font-size:14px;">
           <div style="flex:1 1 260px; display:flex; flex-direction:column; gap:8px;">
-            <span style="font-family:'Alexandria',sans-serif; font-weight:700; font-size:18px; color:#F6F4EE;">{{
+            <span style="font-family:'Alexandria',sans-serif; font-weight:400; font-size:13px; color:#F6F4EE;">{{
               t.footerBrand }}</span>
             <span>{{ t.address }}</span>
             <span style="font-size:12px; color:rgba(246,244,238,0.5);">{{ t.license }}</span>
@@ -372,111 +372,17 @@
             <a href="{{ telHref }}" style="color:#D9BC86;"><span dir="ltr" style="unicode-bidi:isolate;">{{ phoneDisplay
                 }}</span></a>
             <div style="display:flex; gap:16px; margin-top:6px;">
-              <sc-for list="{{ t.socials }}" as="s" hint-placeholder-count="3">
-                <a href="https://www.instagram.com/karismamedicalcenter/"
-                  style="color:rgba(246,244,238,0.7); font-size:13px;">{{ s }}</a>
+              <sc-for list="{{ t.socials }}" as="social" index="i" hint-placeholder-count="3">
+                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                  style="color:rgba(246,244,238,0.7); font-size:13px;">{{ social.label }}</a>
               </sc-for>
             </div>
           </div>
         </div>
       </footer>
 
-      <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
-        <div onClick="{{ closeForm }}"
-          style="position:fixed; inset:0; z-index:100; background:rgba(6,30,25,0.72); backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; padding:20px; overflow-y:auto; -webkit-overflow-scrolling:touch;">
-          <div onClick="{{ stop }}"
-            style="position:relative; margin-block:auto; flex:none; width:100%; max-width:440px; background:#0A2C25; color:#F6F4EE; border-radius:18px; border:1px solid rgba(217,188,134,0.25); padding:28px 24px 24px; box-shadow:0 30px 80px rgba(0,0,0,0.4);">
-            <button onClick="{{ closeForm }}" aria-label="Close"
-              style="position:absolute; top:12px; inset-inline-end:12px; width:36px; height:36px; border-radius:50%; border:1px solid rgba(246,244,238,0.2); background:none; color:#F6F4EE; font-size:18px; cursor:pointer;">×</button>
-            <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
-              <div style="display:flex; flex-direction:column; gap:12px;">
-                <span
-                  style="font-family:'Manrope',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; color:#D9BC86;">KARISMA
-                  PERSONALIZED SMILE</span>
-                <h3
-                  style="margin:0 0 4px; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:24px; line-height:1.4;">
-                  {{ t.formTitle }}</h3>
-                <label
-                  style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{
-                    t.fName }}</span><span style="color:#E8A08C;">*</span></label>
-                <input value="{{ name }}" onChange="{{ onName }}" placeholder="{{ t.namePh }}" autoComplete="name"
-                  style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%;"
-                  style-focus="border-color:#C9A66B;">
-                <label
-                  style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{
-                    t.fPhone }}</span><span style="color:#E8A08C;">*</span></label>
-                <div dir="ltr"
-                  style="display:flex; background:#F6F4EE; border-radius:10px; overflow:hidden; border:1px solid transparent;">
-                  <select value="{{ cc }}" onChange="{{ onCc }}"
-                    style="border:none; border-right:1px solid rgba(10,44,37,0.15); background:transparent; color:#0A2C25; padding:0 10px 0 14px; font-size:15px; font-family:'Manrope',sans-serif; outline:none; cursor:pointer;">
-                    <sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="7">
-                      <option value="{{ c.code }}">{{ c.label }}</option>
-                    </sc-for>
-                  </select>
-                  <input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="50 123 4567" inputMode="tel"
-                    autoComplete="tel-national"
-                    style="flex:1; min-width:0; border:none; background:transparent; color:#0A2C25; padding:14px 16px; font-size:16px; outline:none; font-family:inherit;">
-                </div>
-                <label
-                  style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{
-                    t.fWa }}</span><span style="font-weight:400; color:rgba(246,244,238,0.55);">{{ t.optional
-                    }}</span></label>
-                <div dir="ltr" style="display:flex; background:#F6F4EE; border-radius:10px; overflow:hidden;">
-                  <select value="{{ waCc }}" onChange="{{ onWaCc }}"
-                    style="border:none; border-right:1px solid rgba(10,44,37,0.15); background:transparent; color:#0A2C25; padding:0 10px 0 14px; font-size:15px; font-family:'Manrope',sans-serif; outline:none; cursor:pointer;">
-                    <sc-for list="{{ countryCodes }}" as="c" hint-placeholder-count="7">
-                      <option value="{{ c.code }}">{{ c.label }}</option>
-                    </sc-for>
-                  </select>
-                  <input value="{{ waNum }}" onChange="{{ onWaNum }}" placeholder="50 123 4567" inputMode="tel"
-                    style="flex:1; min-width:0; border:none; background:transparent; color:#0A2C25; padding:14px 16px; font-size:16px; outline:none; font-family:inherit;">
-                </div>
-                <label
-                  style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{
-                    t.fEmail }}</span><span style="font-weight:400; color:rgba(246,244,238,0.55);">{{ t.optional
-                    }}</span></label>
-                <input value="{{ email }}" onChange="{{ onEmail }}" type="email" inputMode="email" autoComplete="email"
-                  dir="ltr" placeholder="name@example.com"
-                  style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%; text-align:start;"
-                  style-focus="border-color:#C9A66B;">
-                <label
-                  style="display:flex; gap:4px; font-size:14px; font-weight:600; color:#F6F4EE; margin-bottom:-4px;"><span>{{
-                    t.fDept }}</span><span style="color:#E8A08C;">*</span></label>
-                <select value="{{ dept }}" onChange="{{ onDept }}"
-                  style="border:1px solid transparent; background:#F6F4EE; color:#0A2C25; border-radius:10px; padding:14px 16px; font-size:16px; outline:none; font-family:inherit; width:100%; cursor:pointer; appearance:auto;">
-                  <option value="" disabled="disabled">{{ t.deptPh }}</option>
-                  <sc-for list="{{ t.depts }}" as="d" hint-placeholder-count="4">
-                    <option value="{{ d }}">{{ d }}</option>
-                  </sc-for>
-                </select>
-                <input type="hidden" name="source" value="{{ formSrc }}">
-                <input type="hidden" name="campaign_source" value="{{ campaignSource }}">
-                <input type="hidden" name="campaign_medium" value="{{ campaignMedium }}">
-                <input type="hidden" name="gclid" value="{{ gclid }}">
-                <input type="hidden" name="gbraid" value="{{ gbraid }}">
-                <input type="hidden" name="wbraid" value="{{ wbraid }}">
-                <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
-                  <span style="font-size:13px; color:#F2B8A8;">{{ formError }}</span>
-                </sc-if>
-                <button onClick="{{ submitForm }}" disabled="{{ submitting }}"
-                  style="background:#C9A66B; color:#0A2C25; border:none; border-radius:10px; padding:16px; font-size:16px; font-weight:600; cursor:pointer; font-family:inherit;"
-                  style-hover="background:#F6F4EE;">{{ submitLabel }}</button>
-                <p style="margin:0; font-size:12px; line-height:1.7; color:rgba(246,244,238,0.65);">{{ t.formNote }}</p>
-              </div>
-            </sc-if>
-            <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex; flex-direction:column; gap:12px; text-align:center; padding:12px 0 4px;">
-                <span
-                  style="width:52px; height:52px; border-radius:50%; background:#C9A66B; color:#0A2C25; display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto;">✓</span>
-                <h3 style="margin:0; font-family:'Alexandria','Manrope',sans-serif; font-weight:700; font-size:22px;">{{
-                  t.sentTitle }}</h3>
-                <p style="margin:0; font-size:15px; color:rgba(246,244,238,0.78);">{{ t.sentBody }}</p>
-              </div>
-            </sc-if>
-          </div>
-        </div>
-      </sc-if>
 
+     
       <div
         style="position:fixed; bottom:0; left:0; right:0; z-index:60; background:rgba(10,44,37,0.96); backdrop-filter:blur(10px); border-top:1px solid rgba(217,188,134,0.2); padding:12px 20px;">
         <div style="max-width:520px; margin:0 auto;">
@@ -488,7 +394,7 @@
     </div>
   </x-dc>
   <script type="text/x-dc" data-dc-script
-    data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ar&quot;,&quot;en&quot;],&quot;default&quot;:&quot;ar&quot;,&quot;tsType&quot;:&quot;'ar'|'en'&quot;},&quot;waNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;971500000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+971 50 000 0000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+    data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ar&quot;,&quot;en&quot;],&quot;default&quot;:&quot;ar&quot;,&quot;tsType&quot;:&quot;'ar'|'en'&quot;},&quot;waNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+971504525189&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phoneDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+971504525189&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   state = { lang: null, open: -1, gi: 0, formOpen: false, formSrc: '', name: '', phone: '', cc: '+971', waCc: '+971', waNum: '', email: '', dept: '', sent: false, formError: '', submitting: false };
   campaign() {
@@ -555,17 +461,22 @@ class Component extends DCLogic {
     const endpoint = this.props.formEndpoint || 'https://admin.karismamc.com/api/contact';
     this.setState({ submitting: true, formError: '' });
     try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!res.ok) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 20000);
+      let res;
+      try {
+        res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: ctrl.signal
+        });
+      } finally { clearTimeout(timer); }
+      let data = null;
+      try { data = await res.json(); } catch (e) {}
+      if (!res.ok || (data && (data.success === false || data.status === false || data.status === 'error'))) {
         let msg = '';
-        try {
-          const j = await res.json();
-          msg = j.message || (j.errors ? Object.values(j.errors).flat()[0] : '');
-        } catch (e) {}
+        if (data) msg = data.message || (data.errors ? Object.values(data.errors).flat()[0] : '');
         throw new Error(msg || ('HTTP ' + res.status));
       }
       try {
@@ -577,7 +488,7 @@ class Component extends DCLogic {
       console.error('[lead] submit failed', err);
       this.setState({
         submitting: false,
-        formError: ar ? 'تعذّر إرسال الطلب، حاول مرة ثانية أو تواصل معنا عبر واتساب.' : 'Could not send your request. Please try again or contact us on WhatsApp.'
+        formError: (err && err.message && !/^HTTP |Failed to fetch|abort|NetworkError|Load failed/i.test(err.message)) ? err.message : (ar ? 'تعذّر إرسال الطلب، حاول مرة ثانية أو تواصل معنا عبر واتساب.' : 'Could not send your request. Please try again or contact us on WhatsApp.')
       });
     }
   }
@@ -594,10 +505,10 @@ class Component extends DCLogic {
   L() { return this.state.lang || this.props.defaultLang || 'ar'; }
 
   wa(ctx) {
-    const num = (this.props.waNumber || '971500000000').replace(/[^0-9]/g, '');
+    const num = (this.props.waNumber || '+971504525189').replace(/[^0-9]/g, '');
     const ar = this.L() === 'ar';
     const msg = (ar ? 'مرحباً كاريزما، أبغى أحجز تقييم ابتسامتي.' : 'Hello Karisma, I would like to book my smile assessment.') +
-      '\n' + (ar ? 'المصدر: ' : 'Source: ') + ctx + '\n' + 'LP: Landing Page 4';
+      '\n' + (ar ? 'المصدر: ' : 'Source: ') + ctx + '\n' + 'LP: Landing Page 2';
     return 'https://wa.me/' + num + '?text=' + encodeURIComponent(msg);
   }
 
@@ -663,7 +574,16 @@ class Component extends DCLogic {
       s8a: 'مب لازم تختار ابتسامتك الآن.', s8b: 'ابدأ بمعرفة إيش يناسبك.',
       s8p: 'احجز تقييم ابتسامتك، واعرف حالة أسنانك، النتيجة اللي تقدر توصل لها، وتوصية الطبيب قبل ما تقرر.',
       footerBrand: 'كاريزما التخصصي الطبي', address: '[العنوان]، [المنطقة]، الشارقة', license: 'مرخّص من [الجهة الصحية]، رقم الترخيص [XXXXX]',
-      socials: ['إنستغرام', 'تيك توك', 'سناب شات']
+      socials: [
+      {'label': 'إنستغرام', 'url': 'https://www.instagram.com/karismamedicalcenter/'}, 
+      {'label': 'تيك توك', 'url': 'https://www.tiktok.com/@karisma_mc?_r=1'}, 
+      {'label': 'سناب شات', 'url': 'https://snapchat.com/t/uFY0xaNo'}],
+      sUrls: [
+      'https://www.instagram.com/karismamedicalcenter/', 
+      'https://www.tiktok.com/@karisma_mc?_r=1', 
+      'https://snapchat.com/t/uFY0xaNo'
+    ]
+
     };
     const en = {
       langToggle: 'العربية', whatsapp: 'WhatsApp', cta: 'Discover the smile that suits you',
@@ -725,12 +645,21 @@ class Component extends DCLogic {
       ],
       s8a: 'You do not have to choose your smile now.', s8b: 'Start by knowing what suits you.',
       s8p: 'Book your smile assessment to learn your dental condition, the result you can achieve and the doctor’s recommendation before you decide.',
-      footerBrand: 'Karisma Specialist Medical Center', address: '[Street address], [Area], Sharjah', license: 'Licensed by [health authority], License no. [XXXXX]',
-      socials: ['Instagram', 'TikTok', 'Snapchat']
+      footerBrand: 'Karisma philosophy is that true beauty lies within everyone — through innovative, luxurious treatments we help individuals embrace their natural allure and shine in their own way.', address: 'Al Raha Walk, Al Muntazah Street, Sharjah, UAE', license: 'Licensed by [health authority], License no. [XXXXX]',
+      socials: [
+        { label: 'Instagram', url: 'https://www.instagram.com/karismamedicalcenter/' },
+        { label: 'TikTok', url: 'https://www.tiktok.com/@karisma_mc?_r=1' },
+        { label: 'Snapchat', url: 'https://snapchat.com/t/uFY0xaNo' }
+      ],
+      sUrls: [
+        'https://www.instagram.com/karismamedicalcenter/',
+        'https://www.tiktok.com/@karisma_mc?_r=1',
+        'https://snapchat.com/t/uFY0xaNo'
+      ]
     };
     return this.L() === 'ar' ? ar : en;
   }
-
+  
   componentDidMount() { this._stripT = setInterval(() => this.setState(s => ({ si: ((s.si || 0) + 1) % 3 })), 3200); }
   componentWillUnmount() { clearInterval(this._stripT); }
 
@@ -739,7 +668,7 @@ class Component extends DCLogic {
     const phone = this.props.phoneDisplay || '+971 6 506 8777';
     return {
       submitting: this.state.submitting,
-      submitLabel: this.state.submitting ? (this.L() === 'ar' ? 'جارٍ الإرسال…' : 'Sending…') : t.cta,
+      submitLabel: this.state.submitting ? (this.L() === 'ar' ? 'جارٍ الإرسال…' : 'Sending…') : (this.L() === 'ar' ? 'إرسال الطلب' : 'Submit request'),
       stripMsg: t.strip[(this.state.si || 0) % t.strip.length],
       t, dir: this.L() === 'ar' ? 'rtl' : 'ltr',
       phoneDisplay: phone, telHref: 'tel:' + phone.replace(/[^0-9+]/g, ''),
@@ -780,6 +709,7 @@ class Component extends DCLogic {
       onDept: (e) => this.setState({ dept: e.target.value }),
       countryCodes: [['AE','+971'],['SA','+966'],['KW','+965'],['QA','+974'],['BH','+973'],['OM','+968'],['EG','+20']].map(([c, code]) => ({ code, label: c + ' ' + code })),
       submitForm: () => this.submitForm(),
+      onEnter: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.submitForm(); } },
       closeForm: () => this.setState({ formOpen: false }),
       stop: (e) => e.stopPropagation(),
       openHero: this.openForm('Hero'), openAssess: this.openForm('Assessment section'),
